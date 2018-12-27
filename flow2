@@ -1,0 +1,88 @@
+[
+    {
+        "id": "58c1091b.ef6958",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ca777083.b5201",
+        "type": "inject",
+        "z": "58c1091b.ef6958",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "11d72964.599447"
+            ]
+        ]
+    },
+    {
+        "id": "11d72964.599447",
+        "type": "function",
+        "z": "58c1091b.ef6958",
+        "name": "payload",
+        "func": "msg.headers={\n    deviceKey:\"j0XuGolRA3hKqFAX\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "6585d30a.96299c"
+            ]
+        ]
+    },
+    {
+        "id": "6585d30a.96299c",
+        "type": "http request",
+        "z": "58c1091b.ef6958",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DKRSCeYM/datachannels/Humidity/datapoints.csv",
+        "tls": "",
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "62cf5797.aaa6d8",
+                "5ce716a.c63eae8"
+            ]
+        ]
+    },
+    {
+        "id": "62cf5797.aaa6d8",
+        "type": "http response",
+        "z": "58c1091b.ef6958",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 640,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5ce716a.c63eae8",
+        "type": "debug",
+        "z": "58c1091b.ef6958",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 660,
+        "y": 180,
+        "wires": []
+    }
+]
